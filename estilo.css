@@ -89,26 +89,26 @@ footer{
 
 /* Heartbeat animation for planet visuals */
 @keyframes heartbeat {
-  0% { transform: scale(1) translateX(0); }
-  5% { transform: scale(1.18) translateX(0); }
+  0% { transform: scale(1) translateX(100px); }
+  /*5% { transform: scale(1.18) translateX(0); }
   10% { transform: scale(0.92) translateX(0); }
   15% { transform: scale(1.12) translateX(0); }
   20% { transform: scale(0.98) translateX(0); }
   25% { transform: scale(1.06) translateX(0); }
   30% { transform: scale(1) translateX(0); }
   80% { transform: scale(1) translateX(0); } /* 2 saniye durağanlık (toplam 2.6s animasyon için) */
-  85% { transform: scale(1) translateX(-4px); }
-  87% { transform: scale(1) translateX(4px); }
+  50% { transform: scale(1) translateX(-100px); }
+  /*87% { transform: scale(1) translateX(4px); }
   89% { transform: scale(1) translateX(-4px); }
-  91% { transform: scale(1) translateX(4px); }
-  93% { transform: scale(1) translateX(-4px); }
-  95% { transform: scale(1) translateX(4px); }
-  97% { transform: scale(1) translateX(-4px); }
-  99% { transform: scale(1) translateX(4px); }
-  100% { transform: scale(1) translateX(0); }
+  91% { transform: scale(1) translateX(100); }
+  93% { transform: scale(1) translateX(-4px); }*/
+  /*95% { transform: scale(1) translateX(100px); }
+  97% { transform: scale(1) translateX(0); }
+  99% { transform: scale(1) translateX(0); }*/
+  100% { transform: scale(1) translateX(100px); }
 }
 
 .planet-spin {
-  animation: heartbeat 2.6s cubic-bezier(.4,0,.6,1) infinite;
+  animation: heartbeat 10s cubic-bezier(.4,0,.6,1) infinite;
 }
 
