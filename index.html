@@ -1,65 +1,81 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="tr-TR">
+     
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Weight on Other Planets</title>
+    <title>DİĞER GEZEGENLERDEKİ AĞIRLIĞINIZ</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
+    
 <body>
-    <header>
-        <h1>Your Weight on Other Planets</h1>
-    </header>
-    <section>
-        <div>
-            <p>Enter your weight in any unit:
-                <input type="number" name="txtweight" id="txtweight">
+    <section style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 64px; padding: 0 4vw;">
+        <div style="flex: 1; max-width: 480px; display: flex; flex-direction: column; align-items: flex-end; text-align: center;">
+            <p><button disabled class="modern-3d-btn" style="background:#fff; color:#000; border:1px solid #ccc; border-radius:4px; padding:1px 8px; font-size:1rem;">Dünyadaki Ağırlığınız:</button>
+            <input type="number" name="txtweight" id="txtweight" oninput="updateWeightDisplay()">
             </p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+            <label style="cursor:pointer;">
+                <input type="radio" name="radplanet" id="Mercury" checked>
+                <button type="button" onclick="selectPlanet('Mercury')" class="modern-3d-btn planet-btn">Merkür</button>
+            </label>
+            <label style="cursor:pointer;">
+                <input type="radio" name="radplanet" id="Venus">
+                <button type="button" onclick="selectPlanet('Venus')" class="modern-3d-btn planet-btn">Venüs</button>
+            </label>
+            <label style="cursor:pointer;">
+                <input type="radio" name="radplanet" id="Mars">
+                <button type="button" onclick="selectPlanet('Mars')" class="modern-3d-btn planet-btn">Mars</button>
+            </label>
+            <label style="cursor:pointer;">
+                <input type="radio" name="radplanet" id="Jupiter">
+                <button type="button" onclick="selectPlanet('Jupiter')" class="modern-3d-btn planet-btn">Jüpiter</button>
+            </label>
+            <label style="cursor:pointer;">
+                <input type="radio" name="radplanet" id="Saturn">
+                <button type="button" onclick="selectPlanet('Saturn')" class="modern-3d-btn planet-btn">Satürn</button>
+            </label>
+            <label style="cursor:pointer;">
+                <input type="radio" name="radplanet" id="Uranus">
+                <button type="button" onclick="selectPlanet('Uranus')" class="modern-3d-btn planet-btn">Üranüs</button>
+            </label>
+            <label style="cursor:pointer;">
+                <input type="radio" name="radplanet" id="Neptune">
+                <button type="button" onclick="selectPlanet('Neptune')" class="modern-3d-btn planet-btn">Neptün</button>
+            </label>
+            <label style="cursor:pointer;">
+                <input type="radio" name="radplanet" id="Moon">
+                <button type="button" onclick="selectPlanet('Moon')" class="modern-3d-btn planet-btn">Ay</button>
+            </label>
+            </div>
             <p>
-                Choose a planet:
+            <input type="button" value="HESAPLA" id="hesaplaBtn" class="modern-3d-btn" onclick="calculate()">
             </p>
-            <p>
-                <input type="radio" name="radplanet" id="mercury" checked>
-                <label for="mercury">Mercury</label>
-            </p>
-            <p>
-                <input type="radio" name="radplanet" id="venus">
-                <label for="venus">Venus</label>
-            </p>
-            <p>
-                <input type="radio" name="radplanet" id="mars">
-                <label for="mars">Mars</label>
-            </p>
-            <p>
-                <input type="radio" name="radplanet" id="jupiter">
-                <label for="jupiter">Jupiter</label>
-            </p>
-            <p>
-                <input type="radio" name="radplanet" id="saturn">
-                <label for="saturn">Saturn</label>
-            </p>
-            <p>
-                <input type="radio" name="radplanet" id="uranus">
-                <label for="uranus">Uranus</label>
-            </p>
-            <p>
-                <input type="radio" name="radplanet" id="neptune">
-                <label for="neptune">Neptune</label>
-            </p>
-            <p>
-                <input type="button" value="Calculate" onclick="calculate()">
-            </p>
+            <div id="planetInfoBoxInline" style="width: 100%; margin-top: 16px;">
+                <button class="modern-3d-btn" id="planetInfoBtnInline" disabled style="width: 100%; text-align: left; white-space: normal; margin-bottom: 8px;"></button>
+                <button class="modern-3d-btn" id="planetRotationBtnInline" disabled style="width: 100%; text-align: left; white-space: normal; margin-bottom: 8px;"></button>
+                <button class="modern-3d-btn" id="planetExtraBtnInline" disabled style="width: 100%; text-align: left; white-space: normal;"></button>
+            </div>
         </div>
-        <div id="res">
-            <p style="text-align:center">
-                Enter your weight on Earth
-            </p>
-            <img src="earth.png" alt="Earth">
+        <div id="res" style="flex: 1.7; min-width: 400px; max-width: 700px; text-align: center; background: rgba(30,40,60,0.18); border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); padding: 40px 28px; margin-top: 0; align-self: flex-start;">
+           <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+            <img src="earth.png" alt="Earth" class="planet-spin planet-spin-earth" style="max-width: 100%; max-height: 100%; animation: spin 10s linear infinite;">
+            </div>
+            <div id="weightResult" style="font-size: 2.5rem; font-weight: bold; color: #fff; margin-top: 18px;"></div>
         </div>
     </section>
-    <footer>
-        <p><strong>The images of the planets are from NASA</strong></p>
-    </footer>
+    <script>
+    function updateWeightDisplay() {
+      var val = document.getElementById('txtweight').value;
+      document.getElementById('weightDisplay').textContent = val ? val : '0';
+    }
+
+    function selectPlanet(id) {
+      var radio = document.getElementById(id);
+      radio.checked = true;
+      radio.click();
+    }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

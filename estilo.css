@@ -8,17 +8,107 @@ header{
     text-align: center;
 }
 
-section {
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    width: 500px;
-    margin: auto;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.356);
-}
 
 footer{
     color: white;
     text-align: center;
     font-style: italic;
 }
+
+/* Modern 3D button style for all buttons */
+.modern-3d-btn {
+  background: linear-gradient(145deg, #e0e0e0 0%, #ffffff 100%);
+  color: #222;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px 0 rgba(60,60,60,0.18), 0 1.5px 0 #bdbdbd inset;
+  padding: 12px 40px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: all 0.25s cubic-bezier(.4,2,.6,1);
+  cursor: pointer;
+  outline: none;
+  margin: 6px 8px;
+  position: relative;
+}
+.modern-3d-btn:active {
+  box-shadow: 0 2px 8px 0 rgba(60,60,60,0.12), 0 1px 0 #bdbdbd inset;
+  transform: translateY(2px) scale(0.98);
+}
+.modern-3d-btn:focus {
+  box-shadow: 0 0 0 3px #a3c4f3;
+}
+
+/* For disabled info/rotation buttons */
+.modern-3d-btn[disabled], .modern-3d-btn:disabled {
+  background: #f5f5f5;
+  color: #aaa;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Make the calculate button extra wide */
+#hesaplaBtn {
+  width: 60vw;
+  max-width: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 0;
+  font-size: 1rem;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* Make planet selection buttons smaller */
+.planet-btn {
+  padding: 1px 14px;
+  font-size: 0.95rem;
+  min-width: 70px;
+  border-radius: 8px;
+  margin: 4px 4px;
+}
+
+/* Dark style for result button */
+.result-btn.dark {
+  background: linear-gradient(145deg, #23272f 0%, #2d3240 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.22), 0 1.5px 0 #222 inset;
+}
+
+/* Inline buttons text color */
+#planetInfoBtnInline {
+  color: #ca0101 !important; /* Turkuaz */
+}
+#planetRotationBtnInline {
+  color: #38ad01 !important; /* Açık yeşil */
+}
+#planetExtraBtnInline {
+  color: #05088d !important; /* Kiremit */
+}
+
+/* Heartbeat animation for planet visuals */
+@keyframes heartbeat {
+  0% { transform: scale(1) translateX(0); }
+  5% { transform: scale(1.18) translateX(0); }
+  10% { transform: scale(0.92) translateX(0); }
+  15% { transform: scale(1.12) translateX(0); }
+  20% { transform: scale(0.98) translateX(0); }
+  25% { transform: scale(1.06) translateX(0); }
+  30% { transform: scale(1) translateX(0); }
+  80% { transform: scale(1) translateX(0); } /* 2 saniye durağanlık (toplam 2.6s animasyon için) */
+  85% { transform: scale(1) translateX(-4px); }
+  87% { transform: scale(1) translateX(4px); }
+  89% { transform: scale(1) translateX(-4px); }
+  91% { transform: scale(1) translateX(4px); }
+  93% { transform: scale(1) translateX(-4px); }
+  95% { transform: scale(1) translateX(4px); }
+  97% { transform: scale(1) translateX(-4px); }
+  99% { transform: scale(1) translateX(4px); }
+  100% { transform: scale(1) translateX(0); }
+}
+
+.planet-spin {
+  animation: heartbeat 2.6s cubic-bezier(.4,0,.6,1) infinite;
+}
+

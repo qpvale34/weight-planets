@@ -1,6 +1,6 @@
-# weight-planets
-Calculate your weight on other planets.
+# GEZEGENLER
+Diğer gezegenlerdeki ağırlığınızı hesaplar.
+Gezegenler hakkında kısa bilgiler verir.
+Gezegen resimleri kaynağı [NASA](https://solarsystem.nasa.gov/planets/overview/).
 
-The images of the planets are from [NASA](https://solarsystem.nasa.gov/planets/overview/).
-
-This is the link to the [website](https://lfuciarelli.github.io/weight-planets/).
+Thanx to @lfuciarelli for his repo.
